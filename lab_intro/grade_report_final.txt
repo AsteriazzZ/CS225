@@ -1,0 +1,192 @@
+Grading r2018 by zzhan145 committed on Fri Aug 26 16:48:07 CDT 2016
+Monad Autograder
+Testing lab_intro at 2016-08-29 00:34:18
+
+"Worry loudly now or scream louder later." ~ Michael Lopp
+
+Setting up test environment...
+Compiling...
+================================================================
+In file included from unit_tests.cpp:7:
+./png.h:99:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel * operator()(size_t x, size_t y);
+        ^
+./png.h:110:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel const * operator()(size_t x, size_t y) const;
+        ^
+./png.h:110:19: error: expected member name or ';' after declaration specifiers
+        RGBAPixel const * operator()(size_t x, size_t y) const;
+        ~~~~~~~~~ ^
+./png.h:153:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel * _pixels;
+        ^
+./png.h:165:33: error: unknown type name 'RGBAPixel'
+        bool _pixels_same(const RGBAPixel & first, const RGBAPixel & second) const;
+                                ^
+./png.h:165:58: error: unknown type name 'RGBAPixel'
+        bool _pixels_same(const RGBAPixel & first, const RGBAPixel & second) const;
+                                                         ^
+./png.h:166:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel & _pixel(size_t x, size_t y) const;
+        ^
+unit_tests.cpp:15:60: error: unknown type name 'RGBAPixel'
+PNG drawCrosshairs(PNG original, int centerX, int centerY, RGBAPixel color);
+                                                           ^
+unit_tests.cpp:76:25: error: unknown type name 'RGBAPixel'
+bool pixels_same( const RGBAPixel & one, const RGBAPixel & two ) {
+                        ^
+unit_tests.cpp:76:48: error: unknown type name 'RGBAPixel'
+bool pixels_same( const RGBAPixel & one, const RGBAPixel & two ) {
+                                               ^
+unit_tests.cpp:84:2: error: unknown type name 'RGBAPixel'
+        RGBAPixel red;
+        ^
+11 errors generated.
+In file included from main.cpp:9:
+./png.h:99:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel * operator()(size_t x, size_t y);
+        ^
+./png.h:110:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel const * operator()(size_t x, size_t y) const;
+        ^
+./png.h:110:19: error: expected member name or ';' after declaration specifiers
+        RGBAPixel const * operator()(size_t x, size_t y) const;
+        ~~~~~~~~~ ^
+./png.h:153:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel * _pixels;
+        ^
+In file included from unit_tests.cpp:7:
+./png.h:99:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel * operator()(size_t x, size_t y);
+        ^
+./png.h:165:33: error: unknown type name 'RGBAPixel'
+        bool _pixels_same(const RGBAPixel & first, const RGBAPixel & second) const;
+                                ^
+./png.h:110:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel const * operator()(size_t x, size_t y) const;
+        ^
+./png.h:110:19: error: expected member name or ';' after declaration specifiers
+        RGBAPixel const * operator()(size_t x, size_t y) const;
+        ~~~~~~~~~ ^
+./png.h:165:58: error: unknown type name 'RGBAPixel'
+        bool _pixels_same(const RGBAPixel & first, const RGBAPixel & second) const;
+                                                         ^
+./png.h:153:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel * _pixels;
+        ^
+./png.h:166:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel & _pixel(size_t x, size_t y) const;
+        ^
+./png.h:165:33: error: unknown type name 'RGBAPixel'
+        bool _pixels_same(const RGBAPixel & first, const RGBAPixel & second) const;
+                                ^
+main.cpp:26:60: error: unknown type name 'RGBAPixel'
+PNG drawCrosshairs(PNG original, int centerX, int centerY, RGBAPixel color)
+                                                           ^
+main.cpp:53:32: warning: unused parameter 'amount' [-Wunused-parameter]
+PNG brighten(PNG original, int amount)
+                               ^
+main.cpp:74:37: warning: unused parameter 'secondImage' [-Wunused-parameter]
+PNG blendImages(PNG firstImage, PNG secondImage)
+                                    ^
+./png.h:165:58: error: unknown type name 'RGBAPixel'
+        bool _pixels_same(const RGBAPixel & first, const RGBAPixel & second) const;
+                                                         ^
+main.cpp:101:5: error: unknown type name 'RGBAPixel'
+    RGBAPixel cyanColor;
+    ^
+./png.h:166:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel & _pixel(size_t x, size_t y) const;
+        ^
+2 warnings and 9 errors generated.
+make: *** [main.o] Error 1
+make: *** Waiting for unfinished jobs....
+unit_tests.cpp:15:60: error: unknown type name 'RGBAPixel'
+PNG drawCrosshairs(PNG original, int centerX, int centerY, RGBAPixel color);
+                                                           ^
+unit_tests.cpp:76:25: error: unknown type name 'RGBAPixel'
+bool pixels_same( const RGBAPixel & one, const RGBAPixel & two ) {
+                        ^
+unit_tests.cpp:76:48: error: unknown type name 'RGBAPixel'
+bool pixels_same( const RGBAPixel & one, const RGBAPixel & two ) {
+                                               ^
+unit_tests.cpp:84:2: error: unknown type name 'RGBAPixel'
+        RGBAPixel red;
+        ^
+11 errors generated.
+ld: no input files
+In file included from png.cpp:13:
+./png.h:99:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel * operator()(size_t x, size_t y);
+        ^
+./png.h:110:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel const * operator()(size_t x, size_t y) const;
+        ^
+./png.h:110:19: error: expected member name or ';' after declaration specifiers
+        RGBAPixel const * operator()(size_t x, size_t y) const;
+        ~~~~~~~~~ ^
+./png.h:153:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel * _pixels;
+        ^
+./png.h:165:33: error: unknown type name 'RGBAPixel'
+        bool _pixels_same(const RGBAPixel & first, const RGBAPixel & second) const;
+                                ^
+./png.h:165:58: error: unknown type name 'RGBAPixel'
+        bool _pixels_same(const RGBAPixel & first, const RGBAPixel & second) const;
+                                                         ^
+./png.h:166:9: error: unknown type name 'RGBAPixel'
+        RGBAPixel & _pixel(size_t x, size_t y) const;
+        ^
+png.cpp:22:1: error: unknown type name 'RGBAPixel'
+RGBAPixel & PNG::_pixel(size_t x, size_t y) const
+^
+png.cpp:37:16: error: unknown type name 'RGBAPixel'
+        _pixels = new RGBAPixel[_height * _width];
+                      ^
+png.cpp:53:4: error: unknown type name 'RGBAPixel'
+                        RGBAPixel & curr = _pixel(x,y);
+                        ^
+png.cpp:68:16: error: unknown type name 'RGBAPixel'
+        _pixels = new RGBAPixel[1];
+                      ^
+png.cpp:127:16: error: unknown type name 'RGBAPixel'
+        _pixels = new RGBAPixel[_height * _width];
+                      ^
+png.cpp:142:6: error: exception specification in declaration does not match previous declaration
+PNG::~PNG()
+     ^
+./png.h:68:9: note: previous declaration is here
+        ~PNG();
+        ^
+png.cpp:157:31: error: unknown type name 'RGBAPixel'
+bool PNG::_pixels_same( const RGBAPixel & first, const RGBAPixel & second ) const {
+                              ^
+png.cpp:157:56: error: unknown type name 'RGBAPixel'
+bool PNG::_pixels_same( const RGBAPixel & first, const RGBAPixel & second ) const {
+                                                       ^
+png.cpp:181:1: error: unknown type name 'RGBAPixel'
+RGBAPixel * PNG::operator()(size_t x, size_t y)
+^
+png.cpp:187:1: error: unknown type name 'RGBAPixel'
+RGBAPixel const * PNG::operator()(size_t x, size_t y) const
+^
+png.cpp:187:11: error: expected unqualified-id
+RGBAPixel const * PNG::operator()(size_t x, size_t y) const
+          ^
+png.cpp:302:16: error: unknown type name 'RGBAPixel'
+        _pixels = new RGBAPixel[_height * _width];
+                      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [png.o] Error 1
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
