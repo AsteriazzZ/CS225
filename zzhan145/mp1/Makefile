@@ -1,4 +1,4 @@
-EXENAME = lab_intro
+EXENAME = mp1
 OBJS = main.o png.o rgbapixel.o
 
 CXX = clang++
