@@ -16,10 +16,10 @@ scene.o : scene.cpp scene.h
 testscene.o : testscene.cpp scene.h image.h
 	$(COMPILER) $(COMPILER_OPTS) testscene.cpp
 
-image.o : png.h image.h
+image.o : image.cpp image.h
 	$(COMPILER) $(COMPILER_OPTS) image.cpp
 
-testimage.o : testimage.cpp png.h rgbapixel.h image.h
+testimage.o : testimage.cpp png.h image.h rgbapixel.h
 	$(COMPILER) $(COMPILER_OPTS) testimage.cpp
 
 png.o : png.cpp png.h rgbapixel.h 
