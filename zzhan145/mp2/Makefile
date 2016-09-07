@@ -7,16 +7,16 @@ all: testimage testscene
 testimage: image.o testimage.o png.o rgbapixel.o 
 	$(LINKER) testimage.o image.o png.o rgbapixel.o $(LINKER_OPTS) -o testimage 
 
-testscene: image.o scene.o testscene.o png.o rgbapixel.o 
+testscene: image.o testscene.o png.o rgbapixel.o scene.o
 	$(LINKER) image.o scene.o testscene.o png.o rgbapixel.o $(LINKER_OPTS) -o testscene 
 
-scene.o : scene.cpp image.h scene.h png.h rgbapixel.h
+scene.o : scene.cpp scene.h
 	$(COMPILER) $(COMPILER_OPTS) scene.cpp
 
-testscene.o : testscene.cpp scene.h png.h rgbapixel.h image.h
+testscene.o : testscene.cpp scene.h image.h
 	$(COMPILER) $(COMPILER_OPTS) testscene.cpp
 
-image.o : png.h rgbapixel.h image.h
+image.o : png.h image.h
 	$(COMPILER) $(COMPILER_OPTS) image.cpp
 
 testimage.o : testimage.cpp png.h rgbapixel.h image.h
