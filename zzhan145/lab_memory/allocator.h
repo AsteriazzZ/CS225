@@ -23,7 +23,8 @@ class Allocator
      * @param studentFile Path to roster file
      * @param roomFile Path to room list file
      */
-    Allocator(const string& studentFile, const string& roomFile);
+    	Allocator(const string& studentFile, const string& roomFile);
+	~Allocator();
 
 
     /**
