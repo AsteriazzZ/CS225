@@ -15,6 +15,7 @@ void Image::flipleft(){
 			
 		}
 	}
+	delete temp;
 }
 
 

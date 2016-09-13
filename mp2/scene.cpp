@@ -124,20 +124,20 @@ void Scene::changemaxlayers(int newmax){
 		}
 	}
 	
-	Image** tempmaxarray = new Image*[newmax];
+	Image** tempMaxArray = new Image*[newmax];
 	int* xi = new int[newmax];
 	int* yi = new int[newmax];
 	
 	//the pointers within the original range
 	for(int i=0; i < maxIndex; i++){
-		tempmaxarray[i] = sceneImage[i];
+		tempMaxArray[i] = sceneImage[i];
 		xi[i] = x[i];
 		yi[i] = y[i];
 	}
 	
 	//the new range of pointers will be 0
 	for(int i = maxIndex; i < newmax; i++){
-		tempmaxarray[i] = NULL;
+		tempMaxArray[i] = NULL;
 		xi[i] = 0;
 		yi[i] = 0;
 	}
@@ -145,7 +145,7 @@ void Scene::changemaxlayers(int newmax){
 	delete[] x;
 	delete[] y;
 	
-	sceneImage = tempmaxarray;
+	sceneImage = tempMaxArray;
 	x = xi;
 	y = yi;
 	maxIndex = newmax;
