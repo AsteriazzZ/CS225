@@ -38,14 +38,14 @@ class Rectangle : public Shape
      *
      * @return the area of the Rectangle in pixels
      */
-    int area() const;
+    virtual int area() const;
 
     /**
      * @brief Computes and returns the perimeter of the Rectangle in pixels
      *
      * @return the perimeter of the Rectangle in pixels
      */
-    int perimeter() const;
+    virtual int perimeter() const;
 
     /**
      * @brief Checks to see if the given Vector2 p is inside of the Rectangle
