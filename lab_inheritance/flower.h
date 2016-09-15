@@ -27,6 +27,7 @@ class Flower : public Drawable
   public:
     Flower(const Vector2& center);
     void draw(PNG* canvas) const;
+	virtual ~Flower();
 };
 
 #endif // FLOWER_H_
