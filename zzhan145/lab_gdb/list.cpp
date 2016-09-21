@@ -32,6 +32,22 @@ void List<T>::clear()
 {
     // @todo Graded in lab_gdb
     // Write this function based on mp3
+    ListNode* current = head;
+    ListNode* coming;
+    
+    if(current == NULL) return;
+    else{
+    	while(current->next != NULL){
+    		coming = current->next;
+    		delete current;
+    		current = NULL;
+    		current = coming;
+    	}
+    	delete current;
+    	current = NULL;
+    	
+    	length = 0;
+    }
 }
 
 /**
@@ -45,6 +61,18 @@ void List<T>::insertFront(T const& ndata)
 {
     // @todo Graded in lab_gdb
     // Write this function based on mp3
+    ListNode* temp = head;
+    
+    if(temp == NULL){
+    	head = new ListNode(ndata);
+    	length++;
+    }
+    else{
+    	temp = head;
+    	head = new ListNode(ndata);
+    	head->next = temp;
+    	length++;
+    }
 }
 
 /**
@@ -62,6 +90,7 @@ void List<T>::insertBack(const T& ndata)
 
     if (temp == NULL) {
         head = new ListNode(ndata);
+        length++; //<I changed>
     } else {
         while (temp->next != NULL)
             temp = temp->next;
@@ -94,7 +123,8 @@ typename List<T>::ListNode* List<T>::reverse(ListNode* curr, ListNode* prev,
 {
     // @todo Graded in lab_gdb
     ListNode* temp;
-    if (len <= 0) {
+    if (len < 1) return curr; //<I added>
+    if (len <= 1) { //<I changed>
         curr->next = prev;
         return curr;
     } else {
@@ -123,7 +153,8 @@ void List<T>::shuffle()
     ListNode *one, *two, *prev, *temp;
     one = two = prev = temp = head;
 
-    for (int i = 0; i < length / 2; i++) {
+	if (head == NULL) return; //<I added>
+    for (int i = 0; i < (length+1)/2; i++) { //<I changed>
         prev = two;
         two = two->next;
     }
@@ -135,5 +166,10 @@ void List<T>::shuffle()
         one->next = two;
         two = two->next;
         one->next->next = temp;
+        one = temp; //<I added>
     }
+    //<Following I added>
+    one->next = two;
+    if (one != prev)
+    	one->next->next = prev;
 }
