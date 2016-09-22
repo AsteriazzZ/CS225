@@ -18,6 +18,7 @@ template <class T>
 List<T>::~List()
 {
     /// @todo Graded in MP3.1
+	clear();
 }
 
 /**
@@ -28,6 +29,16 @@ template <class T>
 void List<T>::clear()
 {
     /// @todo Graded in MP3.1
+	ListNode* temp = head;
+	while(temp != NULL){
+		head = head->next;
+		delete temp;
+		temp = head;
+	}
+	head = NULL;
+	tail = NULL;
+	length = 0;
+	
 }
 
 /**
@@ -40,6 +51,20 @@ template <class T>
 void List<T>::insertFront(T const& ndata)
 {
     /// @todo Graded in MP3.1
+	ListNode* temp = new ListNode(ndata);
+	
+	if(temp == NULL){
+		head = temp;
+		tail = temp;
+		length++;
+	}
+	else{
+		temp->next = head;
+		temp->prev = NULL;
+		head->prev = temp;
+		head = temp;
+		length++;
+	}
 }
 
 /**
@@ -52,6 +77,19 @@ template <class T>
 void List<T>::insertBack(const T& ndata)
 {
     /// @todo Graded in MP3.1
+	ListNode* temp = new ListNode(ndata);
+
+    	if (temp == NULL) {
+        	head = temp; tail = temp;
+        	length++; 
+    	}
+	else {
+        	temp->next = NULL;
+		temp->prev = tail;
+            	tail->next = temp;
+        	tail = temp;
+        	length++;
+    	}
 }
 
 /**
@@ -78,6 +116,38 @@ template <class T>
 void List<T>::reverse(ListNode*& startPoint, ListNode*& endPoint)
 {
     /// @todo Graded in MP3.1
+	if (startPoint == NULL || startPoint == endPoint) return;
+	ListNode* startPrev = startPoint->prev;
+	ListNode* endNext = endPoint->next;
+	
+	if (startPrev != NULL)
+		startPrev->next = endPoint;
+	if (endNext != NULL)
+		endNext->prev = startPoint;
+
+	ListNode* temp1 = startPoint;
+	ListNode* temp2 = startPoint;
+
+	while(temp1 != endPoint){
+		temp2 = temp2->next;
+		temp1->next = temp1->prev;
+		temp1->prev = temp2;
+		temp1 = temp2;
+	}
+	endPoint->next = endPoint->prev;
+	endPoint->prev = startPrev;
+	startPoint->next = endNext;
+	temp2 = startPoint;
+	startPoint = endPoint;
+	endPoint = temp2;
+
+	if (startPrev == NULL)
+		head = startPoint;
+	if (endNext == NULL)
+		tail = endPoint;
+
+	temp1 = NULL;
+	temp2 = NULL;
 }
 
 /**
@@ -90,6 +160,26 @@ template <class T>
 void List<T>::reverseNth(int n)
 {
     /// @todo Graded in MP3.1
+	if (head == NULL || tail == NULL || n <= 0 || n == 1) return;
+	if (n >= length){
+		reverse(head, tail);
+		return;
+	}
+	ListNode* temp1;
+	ListNode* temp2 = head;
+	int count = length;
+
+	while (count >= n){
+		temp1 = temp2;
+		for (int i=0; i < n-1; i++)
+			temp1 = temp1->next;
+		reverse(temp2, temp1);
+		temp2 = temp1->next;
+		count = count - n;
+	}
+	if (temp2 != NULL)
+		reverse(temp2, tail);
+	tail = temp2;
 }
 
 /**
@@ -105,6 +195,20 @@ template <class T>
 void List<T>::waterfall()
 {
     /// @todo Graded in MP3.1
+	if (head == NULL || tail == NULL || length == 1) return;
+	ListNode* temp1 = head;
+	ListNode* temp2 = temp1->next;
+
+	for (int i=0; i < length-2; i++){
+		temp2->next->prev = temp1;
+		temp1->next = temp2->next;
+		temp2->next = NULL;
+		temp2->prev = tail;
+		tail->next = temp2;
+		tail = temp2;
+		temp1 = temp1->next;
+		temp2 = temp2->next;
+	}
 }
 
 /**
