@@ -32,22 +32,24 @@ void List<T>::clear()
 {
     // @todo Graded in lab_gdb
     // Write this function based on mp3
-    ListNode* current = head;
-    ListNode* coming;
     
-    if(current == NULL) return;
-    else{
-    	while(current->next != NULL){
-    		coming = current->next;
-    		delete current;
-    		current = NULL;
-    		current = coming;
-    	}
-    	delete current;
-    	current = NULL;
-    	
-    	length = 0;
-    }
+	ListNode* curr = head;
+	ListNode* coming;
+
+	if(curr == NULL) return;
+	else{
+		while(curr->next != NULL){
+			coming = curr->next;
+			delete curr;
+			curr = NULL;
+			curr = coming;
+		}
+		delete curr;
+		curr = NULL;
+		
+		length = 0;
+	}
+	
 }
 
 /**
@@ -73,6 +75,7 @@ void List<T>::insertFront(T const& ndata)
     	head->next = temp;
     	length++;
     }
+		
 }
 
 /**
@@ -90,11 +93,11 @@ void List<T>::insertBack(const T& ndata)
 
     if (temp == NULL) {
         head = new ListNode(ndata);
-        length++; //<I changed>
+        length++; //<changed>
     } else {
         while (temp->next != NULL)
             temp = temp->next;
-        temp = new ListNode(ndata);
+        temp->next = new ListNode(ndata); //<changed>
         length++;
     }
 }
@@ -122,16 +125,16 @@ typename List<T>::ListNode* List<T>::reverse(ListNode* curr, ListNode* prev,
                                              int len)
 {
     // @todo Graded in lab_gdb
-    ListNode* temp;
-    if (len < 1) return curr; //<I added>
-    if (len <= 1) { //<I changed>
-        curr->next = prev;
-        return curr;
-    } else {
-        temp = reverse(curr->next, curr, len - 1);
-        curr->next = prev;
-        return temp;
-    }
+	ListNode* temp;
+	if(len == 0) return curr; //
+	if (len == 1) { //
+		curr->next = prev;
+		return curr;
+	} else {
+		temp = reverse(curr->next, curr, len - 1);
+		curr->next = prev;
+		return temp;
+	}
 }
 
 /**
@@ -150,15 +153,15 @@ void List<T>::shuffle()
     // Find the center, and split the list in half
     // one should point at the start of the first half-list
     // two should point at the start of the second half-list
-    ListNode *one, *two, *prev, *temp;
-    one = two = prev = temp = head;
+	ListNode *one, *two, *prev, *temp;
+	one = two = prev = temp = head;
 
-	if (head == NULL) return; //<I added>
-    for (int i = 0; i < (length+1)/2; i++) { //<I changed>
-        prev = two;
-        two = two->next;
-    }
-    prev->next = NULL;
+	if (head == NULL) return; //
+	for (int i = 0; i < (length+1)/2; i++){ //
+		prev = two;
+		two = two->next;
+	}
+	prev->next = NULL;
 
     // interleave
     while (two != NULL) {
@@ -166,10 +169,7 @@ void List<T>::shuffle()
         one->next = two;
         two = two->next;
         one->next->next = temp;
-        one = temp; //<I added>
+	one = temp;
     }
-    //<Following I added>
-    one->next = two;
-    if (one != prev)
-    	one->next->next = prev;
+    
 }
