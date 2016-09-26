@@ -51,14 +51,14 @@ void checkSoln(string test, PNG out, string soln_file)
 
 void testInserts()
 {
-    cout << "Hi! I'm your friendly `" __FILE__ "`. You should edit me to enable the insertion tests." << endl;
-    cout << endl;
-    cout << "Guess what? You can also add your own!" << endl;
-    cout << endl;
-    cout << "Most of the tests for this MP use images, and those can be hard to debug." << endl;
-    cout << "You should add some tests that use integer lists!" << endl;
-    cout << endl;
-    cout << "Start by uncommenting lines " << (__LINE__ + 3) << " through " << (__LINE__ + 26) << "." << endl;
+    // cout << "Hi! I'm your friendly `" __FILE__ "`. You should edit me to enable the insertion tests." << endl;
+//     cout << endl;
+//     cout << "Guess what? You can also add your own!" << endl;
+//     cout << endl;
+//     cout << "Most of the tests for this MP use images, and those can be hard to debug." << endl;
+//     cout << "You should add some tests that use integer lists!" << endl;
+//     cout << endl;
+//     cout << "Start by uncommenting lines " << (__LINE__ + 3) << " through " << (__LINE__ + 26) << "." << endl;
 
     /* uncomment the below */
     cout << "[main]: " << __func__ << "()" << endl;
