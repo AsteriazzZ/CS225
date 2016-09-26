@@ -166,56 +166,32 @@ template <class T>
 void List<T>::reverseNth(int n)
 {
     /// @todo Graded in MP3.1
-	// if (head == NULL || tail == NULL || n <= 0 || n == 1) return;
-// 	if (n >= length){
-// 		reverse(head, tail);
-// 		return;
-// 	}
-// 	ListNode* temp1;
-// 	ListNode* temp2 = head;
-// 	int count = length;
-// 
-// 	while (count >= n){
-// 		temp1 = temp2;
-// 		for (int i=0; i < n-1; i++)
-// 			temp1 = temp1->next;
-// 		reverse(temp2, temp1);
-// 		temp2 = temp1->next;
-// 		count = count - n;
-// 	}
-// 	if (temp2 != NULL)
-// 		reverse(temp2, tail);
-// 	tail = temp2;
+	if (n == 0) return;
+	ListNode* temp1 = head;
+	ListNode* temp2 = head;
+	int l = length;
 	
-	    if (n==0)
-        return;
-    int l=length;
-    ListNode* endPoint=head;
-    ListNode* startPoint=head;
-     
-    while(l>0){
-        if (n<l){
-            for (int i = n; i > 1; i--)
-                endPoint=endPoint->next;
- 
-            if (startPoint!=head)
-                reverse(startPoint,endPoint);
-            else
-                reverse(head,endPoint);
-            startPoint=endPoint->next;
-            endPoint=startPoint;
-            l-=n;
-        }
-        else
-        {
-            if (startPoint!=head)
-     
-                reverse(startPoint,tail);
-            else
-                reverse(head,tail);
-            return;
-        }
-    }
+	while(l > 0){
+		if (n < l){
+			for (int i = n; i > 1; i--)
+				temp1 = temp1->next;
+			if (temp2 != head)
+				reverse(temp2, temp1);
+			else
+				reverse(head, temp1);
+			temp2 = temp1->next;
+			temp1 = temp2;
+			l = l - n;
+		}
+		else{
+			if (temp2 != head)
+				reverse(temp2, tail);
+			else
+				reverse(head, tail);
+			return;
+		}
+	}
+	
 }
 
 /**
