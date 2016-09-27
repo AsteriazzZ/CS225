@@ -219,8 +219,9 @@ void List<T>::waterfall()
 		tail->next = temp2;
 		tail = temp2;
 		temp1 = temp1->next;
-		temp2 = temp2->next;
+		temp2 = temp1->next;
 	}
+
 }
 
 /**
