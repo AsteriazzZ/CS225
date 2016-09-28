@@ -352,45 +352,49 @@ template <class T>
 typename List<T>::ListNode* List<T>::merge(ListNode* first, ListNode* second)
 {
     /// @todo Graded in MP3.2
-    if(first == NULL && second == NULL) return NULL;
-    // Always return the start node of the list
-    if (first == NULL) return second;
-    if (second == NULL) return first;
-    
-    ListNode *curr1 = first;
-    ListNode *curr2 = second;
-    ListNode *temp;
-    
-    while (curr1 != NULL && curr2 != NULL){
-    	if (curr1->data < curr2->data){
-    		temp = curr1;
-    		curr1 = curr1->next;
-    	}
-    	else{
-    		if (curr1->prev == NULL){
-    			temp = curr2->next;
-    			curr2->prev = NULL;
-    			curr2->next = curr1;
-    			curr1->prev = curr2;
-    			curr2 = temp;
-    		}
-    		else{
-    			temp = curr2->next;
-    			curr2->prev = curr1->prev;
-    			curr1->prev->next = curr2;
-    			curr2->next = curr1;
-    			curr1->prev = curr2;
-    			curr2 = temp;
-    		}
-    	}
-    }
-    if (curr1 == NULL){
-    	temp->next = curr2;
-    	curr2->prev = temp;
-    	curr1 = curr2;
-    }
-    if (first->data < second->data) return first;
-    else return second;
+
+	if (first == NULL && second == NULL) return NULL;
+	if (first == NULL && second != NULL) return second;
+	if (first != NULL && second == NULL) return first;
+	
+	ListNode *curr1 = first;
+	ListNode *curr2 = second;
+	ListNode *temp, *start;
+	
+	if (curr1->data < curr2->data){
+		start = curr1;
+		curr1 = curr1->next;
+	}else{
+		start = curr2;
+		curr2 = curr2->next;
+	}
+	temp = start;
+	while (curr1 != NULL && curr2 != NULL){
+		if (curr1->data < curr2->data){
+			temp->next = curr1;
+			curr1->prev = temp;
+			temp = curr1;
+			curr1 = curr1->next;
+		}else{
+			temp->next = curr2;
+			curr2->prev = temp;
+			temp = curr2;
+			curr2 = curr2->next;
+		}
+	}
+	while (curr1 != NULL){
+		temp->next = curr1;
+		curr1->prev = temp;
+		temp = curr1;
+		curr1 = curr1->next;
+	}
+	while (curr2 != NULL){
+		temp->next = curr2;
+		curr2->prev = temp;
+		temp = curr2;
+		curr2 = curr2->next;
+	}
+	return start;
 }
 
 /**
