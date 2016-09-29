@@ -114,6 +114,7 @@ int main()
     else
         cout << "Stack or queue " + make_red("CHANGED: :(") << endl;
     cout << endl;
+	return 0;
 }
 
 template <typename T>
