@@ -26,9 +26,21 @@ template <typename T>
 T sum(stack<T>& s)
 {
     // Your code here
-    return T(); // stub return value (0 for primitive types). Change this!
-                // Note: T() is the default value for objects, and 0 for
-                // primitive types
+	T result;
+	T temp;
+	
+	if (s.empty()) return T();
+	else{
+		temp = s.top();
+		s.pop();
+		result = sum(s) + temp;
+		s.push(temp);
+		return result;
+	}
+
+//return T(); 
+// stub return value (0 for primitive types). Change this!
+// Note: T() is the default value for objects, and 0 for primitive types
 }
 
 /**
@@ -46,10 +58,48 @@ T sum(stack<T>& s)
 template <typename T>
 void scramble(queue<T>& q)
 {
-    stack<T> s;
+	stack<T> s;
     // optional: queue<T> q2;
-
+	
     // Your code here
+	queue<T> q2;
+	int counter = 0;
+
+	while (!q.empty()){
+		counter++;
+		//odd groups
+		if(counter%2 == 1){
+			for(int i = 0; i<counter; i++){
+				//1st reverse
+				if(!q.empty()){
+					q2.push(q.front());
+					q.pop();
+				}
+			}
+		}
+		//even groups
+		else{
+			//1st reverse
+			for(int i = 0; i<counter; i++){
+				if(!q.empty()){
+					s.push(q.front());
+					q.pop();
+				}
+			}
+			//2nd reverse
+			while(!s.empty()){
+				q2.push(s.top());
+				s.pop();
+			}
+		}
+	}
+	//reverse the whole q2
+	//odd groups have total 2 times of reverse
+	//even groups have total 3 times of reverse
+	while (!q2.empty()){
+		q.push(q2.front());
+		q2.pop();
+	}
 }
 
 /**
@@ -69,11 +119,19 @@ void scramble(queue<T>& q)
 template <typename T>
 bool verifySame(stack<T>& s, queue<T>& q)
 {
-    bool retval = true; // optional
-    //T temp1; // rename me
-    //T temp2; // rename :)
+	T s1;
+	T q1;
 
-    return retval;
-}
+	if (s.size() == 0) return true;
+	s1 = s.top();
+	s.pop();
+	bool retval = verifySame(s, q);
 
+	q1 = q.front();
+	q.pop();
+	q.push(q1);
+	s.push(s1);
+	
+	return (q1 = s1) && retval;
 }
+};
