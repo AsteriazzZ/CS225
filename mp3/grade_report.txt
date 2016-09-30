@@ -1,8 +1,8 @@
-Grading r21902 by zzhan145 committed on Wed Sep 28 14:12:56 CDT 2016
+Grading r22389 by enx-cs225autograder committed on Thu Sep 29 02:34:37 CDT 2016
 Monad Autograder
-Testing mp3 at 2016-09-29 02:23:07
+Testing mp3 at 2016-09-30 02:27:28
 
-"C makes it easy to shoot yourself in the foot. C++ makes it harder, but when you do, you blow away your whole leg!" ~ Bjarne Stroustrup
+"At least for a while, in your heart of hearts you'll be confident only that the university will soon enough discover its error in awarding you the PhD, and at some point will brand you (in public no doubt) the fraud you know you are. This too will pass as you come to realize that students are extremely gullible and many of your colleagues are even greater frauds than you." ~ Berkeley PhD Advice
 
 Setting up test environment...
 Compiling...
