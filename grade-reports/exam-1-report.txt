@@ -4,19 +4,19 @@ Exam report for Asteria Zhang
 Scores
 ------
 
-  Problem                   Points
-  ----------------------- --------
-  constructors-2a                0
-  constructors-3c                4
-  km-arrays-2b                   0
-  km-declarationopts-1b          4
-  km-firstclass-1b               4
-  km-makefile-1d                 0
-  km-pointersintro-3c            4
-  passbyvalue-1a                 4
-  rtriangle                     18
+  Problem                      Points
+  ----------------------- -----------
+  constructors-2a            0.000000
+  constructors-3c            4.000000
+  km-arrays-2b               0.000000
+  km-pointersintro-3c        4.000000
+  passbyvalue-1a             4.000000
+  km-declarationopts-1b      4.000000
+  km-firstclass-1b           4.000000
+  km-makefile-1d             1.333333
+  rtriangle                 18.000000
 
-Total score: 38/50 (76%)
+Total score: 39.3333333/50 (78.6666667%)
 
 Code Problem Test Output
 ------------------------
