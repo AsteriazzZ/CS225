@@ -108,6 +108,7 @@ class BinaryTree
      *  (not creating a flipped copy).
      */
     void mirror();
+    void mirror(Node* subRoot);
 
     /**
      * @return True if an in-order traversal of the tree would produce a
@@ -115,6 +116,7 @@ class BinaryTree
      *  criterion for a binary tree to be a binary search tree.
      */
     bool isOrdered() const;
+    bool isOrdered(const Node* subRoot) const;
 
     /**
      * Prints out all the possible paths from the root of the tree to any leaf
@@ -124,6 +126,7 @@ class BinaryTree
      * printed before paths ending in a node further to the right.
      */
     void printPaths() const;
+    void printPaths(const Node* subRoot, vector<T> path) const;
 
     /**
      * Each node in a tree has a distance from the root node - the depth of that
