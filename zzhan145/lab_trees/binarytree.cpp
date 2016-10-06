@@ -77,6 +77,22 @@ template <typename T>
 void BinaryTree<T>::mirror()
 {
     // your code here
+	mirror(root);
+}
+
+//helper function
+template <typename T>
+void BinaryTree<T>::mirror(Node* subRoot){
+	
+	if (subRoot == NULL) return;
+	
+	Node* temp;
+	mirror(subRoot->left);
+	mirror(subRoot->right);
+
+	temp = subRoot->left;
+	subRoot->left = subRoot->left;
+	subRoot->right = temp;
 }
 
 
@@ -89,7 +105,26 @@ template <typename T>
 bool BinaryTree<T>::isOrdered() const
 {
     // your code here
-    return false;
+    return isOrdered(root);
+}
+
+template <typename T>
+bool BinaryTree<T>::isOrdered(const Node* subRoot) const{
+	if(height(subRoot) == 0) return true;
+
+	bool result = true;
+	if(subRoot->left == NULL){
+		if(subRoot->elem <= subRoot->right->elem)
+			result = isOrdered(subRoot->right);
+		else result = false;
+	}
+	else if(subRoot->right == NULL){
+		if(subRoot->elem <= subRoot->left->elem)
+			result = isOrdered(subRoot->left);
+		else result = false;
+	}
+	return result;
+	
 }
 
 
@@ -103,6 +138,27 @@ template <typename T>
 void BinaryTree<T>::printPaths() const
 {
     // your code here
+	vector<T> path;
+	printPath(root, path);
+}
+
+template <typename T>
+void BinaryTree<T>::printPaths(const Node* subRoot, vector<T> path) const{
+	
+	if(subRoot == NULL) return;
+	
+	path.push_back(subRoot->elem);
+	if(subRoot->left == NULL && subRoot->right == NULL){
+		cout << "Path: ";
+		while (path.size() != 0){
+			cout << path.front();
+			path.erase(path.begin());
+		}
+		cout << endl;
+	}else{
+		printPaths(subRoot->left, path);
+		printPaths(subRoot->right, path);
+	}
 }
 
 
