@@ -117,6 +117,12 @@ class BinaryTree
      */
     bool isOrdered() const;
     bool isOrdered(const Node* subRoot) const;
+    // T mostL(const Node* subRoot) const;
+//     T leastR(const Node* subRoot) const;
+	T getLmost(const Node * subRoot) const;
+	T getRmost(const Node * subRoot) const;
+	bool compa(const Node * subRoot) const;
+	
 
     /**
      * Prints out all the possible paths from the root of the tree to any leaf
@@ -126,7 +132,8 @@ class BinaryTree
      * printed before paths ending in a node further to the right.
      */
     void printPaths() const;
-    void printPaths(const Node* subRoot, vector<T> path) const;
+    // void printPaths(const Node* subRoot, vector<T> path) const;
+    void printPaths(const Node* subRoot, std::vector<int> v) const;
 
     /**
      * Each node in a tree has a distance from the root node - the depth of that
@@ -137,7 +144,8 @@ class BinaryTree
      * @return The sum of the distances of all nodes to the root
      */
     int sumDistances() const;
-
+	int sumDistances(Node* subRoot, int depth) const;
+	
   private:
     Node* root;
 
