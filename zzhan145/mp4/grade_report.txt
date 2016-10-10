@@ -1,8 +1,8 @@
-Grading r28857 by enx-cs225autograder committed on Sat Oct  8 02:02:59 CDT 2016
+Grading r29167 by enx-cs225autograder committed on Sun Oct  9 02:16:17 CDT 2016
 Monad Autograder
-Testing mp4 at 2016-10-09 02:14:04
+Testing mp4 at 2016-10-10 02:30:52
 
-"There's an old story about the person who wished his computer were as easy to use as his telephone. That wish has come true, since I no longer know how to use my telephone." ~ Bjarne Stroustrup
+"Honestly, if you don't fit in, then you're probably doing the right thing." ~ LIGHTS
 
 Setting up test environment...
 Compiling...
