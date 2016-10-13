@@ -1,0 +1,46 @@
+CD to .. 
+/home/mattox/repos/cs225/fa16-exam2-grading/submissions/zzhan145
+###############################
+##                           ##
+##     Grading question      ##
+##                           ##
+###############################
+Grader dir is /home/mattox/repos/cs225/fa16-exam2-grading/code-grading/scripts
+qid is easy-03
+variant is
+test_dir is /home/mattox/repos/cs225/fa16-exam2-grading/code-grading/scripts/tests/easy-03/
+fullTmpDir = /home/mattox/repos/cs225/fa16-exam2-grading/submissions/zzhan145/grade-.7BY
+:: Compiling...
+g++ -std=c++0x -c -g -O0 -Wall -Wextra -Wno-unused-function   -c -o easy.o easy.cpp
+In file included from /usr/include/_G_config.h:15:0,
+                 from /usr/include/libio.h:31,
+                 from /usr/include/stdio.h:74,
+                 from /usr/include/c++/6/cstdio:42,
+                 from /usr/include/c++/6/ext/string_conversions.h:43,
+                 from /usr/include/c++/6/bits/basic_string.h:5402,
+                 from /usr/include/c++/6/string:52,
+                 from /usr/include/c++/6/bits/locale_classes.h:40,
+                 from /usr/include/c++/6/bits/ios_base.h:41,
+                 from /usr/include/c++/6/ios:42,
+                 from /usr/include/c++/6/ostream:38,
+                 from /usr/include/c++/6/iostream:39,
+                 from linkedlist.h:4,
+                 from easy.cpp:1:
+easy.cpp: In function ‘bool removeAt(LinkedList&, int)’:
+easy.cpp:16:8: error: expected unqualified-id before ‘__null’
+  temp->NULL;
+        ^
+<builtin>: recipe for target 'easy.o' failed
+make: *** [easy.o] Error 1
+Could not compile easy.o.
+
+Grade for question : 0/100
+
+
+~ ~ ~
+
+Grade: 0
+
+Details:
+test,grade
+_compiled,0
