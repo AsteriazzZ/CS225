@@ -1,49 +1,69 @@
-Grading r30681 by zzhan145 committed on Tue Oct 11 18:34:58 CDT 2016
+Grading r30949 by zzhan145 committed on Wed Oct 12 14:55:03 CDT 2016
 Monad Autograder
-Testing mp4 at 2016-10-12 02:20:51
+Testing mp4 at 2016-10-13 02:34:57
 
-"If you just rely on one model, you tend to amputate reality to make it fit your model." ~ David Brooks
+"I can calculate the motions of the heavenly bodies, but not the madness of people." ~ Isaac Newton
 
 Setting up test environment...
 Compiling...
 ================================================================
-In file included from unit_tests.cpp:15:
-In file included from ./filler.h:264:
-./filler.cpp:20:1: error: expected expression
-}
-^
-1 error generated.
-In file included from unit_tests.cpp:15:
-In file included from ./filler.h:264:
-./filler.cpp:20:1: error: expected expression
-}
-^
-1 error generated.
-ld: no input files
-In file included from unit_tests.cpp:15:
-In file included from ./filler.h:264:
-./filler.cpp:20:1: error: expected expression
-}
-^
-1 error generated.
-In file included from unit_tests.cpp:15:
-In file included from ./filler.h:264:
-./filler.cpp:20:1: error: expected expression
-}
-^
-1 error generated.
-ld: no input files
-clang-3.5: error: no such file or directory: 'unit_tests.o'
-make: *** [proxy] Error 1
-make: *** Waiting for unfinished jobs....
 
 
 Running tests...
 ================================================================
-Could not execute test cases
+testStackPushPeek  . . . . . . . [1 pts] - passed
+testStackPushPop . . . . . . . . [1 pts] - passed
+testStackManyPushesPeek  . . . . [1 pts] - passed
+testStackManyPushesTwoPops . . . [1 pts] - passed
+testStackManyOperations  . . . . [1 pts] - passed
+testStackDuplicateElements . . . [1 pts] - passed
+testQueueEnqueuePeek . . . . . . [1 pts] - passed
+testQueueEnqueueDequeue  . . . . [1 pts] - passed
+testQueueManyEnqueuesPeek  . . . [1 pts] - passed
+testQueueManyEnqueuesTwoDequeues [1 pts] - passed
+testQueueManyOperations  . . . . [1 pts] - passed
+stack_peek_1 . . . . . . . . . . [1 pts] - passed
+stack_pop_peek_1 . . . . . . . . [1 pts] - passed
+stack_pop_2  . . . . . . . . . . [2 pts] - passed
+stack_isEmpty_1  . . . . . . . . [1 pts] - passed
+stack_isEmpty_2  . . . . . . . . [1 pts] - passed
+stack_push_pop_isEmpty . . . . . [2 pts] - passed
+stack_push_and_pop . . . . . . . [2 pts] - passed
+queue_peek_1 . . . . . . . . . . [1 pts] - passed
+queue_dequeue_peek_1 . . . . . . [2 pts] - passed
+queue_dequeue_2  . . . . . . . . [2 pts] - passed
+queue_isEmpty_1  . . . . . . . . [1 pts] - passed
+queue_isEmpty_2  . . . . . . . . [1 pts] - passed
+queue_enqueue_dequeue_isEmpty  . [2 pts] - passed
+queue_enqueue_and_dequeue  . . . [2 pts] - passed
+testThroughStackQueue  . . . . . [2 pts] - passed
+testEnqueueConstantTime  . . . . [2 pts] - passed
+testDequeueConstantTime  . . . . [2 pts] - passed
+testEnqueuePeekDequeueTime . . . [2 pts] - passed
+solid_picker_15  . . . . . . . . [4 pts] - passed
+gradient_picker_16 . . . . . . . [4 pts] - passed
+gradient_picker_17 . . . . . . . [4 pts] - passed
+DFS_solid  . . . . . . . . . . . [4 pts] - passed
+BFS_solid  . . . . . . . . . . . [4 pts] - passed
+DFS_grid . . . . . . . . . . . . [4 pts] - passed
+BFS_grid . . . . . . . . . . . . [4 pts] - passed
+DFS_gradient . . . . . . . . . . [4 pts] - passed
+BFS_gradient . . . . . . . . . . [4 pts] - passed
+DFS_18 . . . . . . . . . . . . . [2 pts] - passed
+DFS_19 . . . . . . . . . . . . . [2 pts] - passed
+DFS_20 . . . . . . . . . . . . . [2 pts] - passed
+DFS_21 . . . . . . . . . . . . . [2 pts] - passed
+DFS_22 . . . . . . . . . . . . . [2 pts] - passed
+DFS_23 . . . . . . . . . . . . . [2 pts] - passed
+BFS_24 . . . . . . . . . . . . . [2 pts] - passed
+BFS_25 . . . . . . . . . . . . . [2 pts] - passed
+BFS_26 . . . . . . . . . . . . . [2 pts] - passed
+BFS_27 . . . . . . . . . . . . . [2 pts] - passed
+BFS_28 . . . . . . . . . . . . . [2 pts] - passed
+BFS_29 . . . . . . . . . . . . . [2 pts] - passed
 
 
 Total score...
 ================================================================
-TOTAL SCORE: 0
+TOTAL SCORE: 100
 
