@@ -1,8 +1,8 @@
-Grading r30949 by zzhan145 committed on Wed Oct 12 14:55:03 CDT 2016
+Grading r31411 by enx-cs225autograder committed on Thu Oct 13 02:37:19 CDT 2016
 Monad Autograder
-Testing mp4 at 2016-10-13 02:34:57
+Testing mp4 at 2016-10-14 02:19:29
 
-"I can calculate the motions of the heavenly bodies, but not the madness of people." ~ Isaac Newton
+"There are two ways of constructing a software design. One way is to make it so simple that there are obviously no deficiencies. And the other way is to make it so complicated that there are no obvious deficiencies." ~ C.A.R. Hoare
 
 Setting up test environment...
 Compiling...
