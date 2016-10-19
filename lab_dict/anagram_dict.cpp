@@ -23,6 +23,29 @@ using std::ifstream;
 AnagramDict::AnagramDict(const string& filename)
 {
     /* Your code goes here! */
+    /**
+     ifstream words(filename);
+     string word;
+     if(words.is_open()){
+    	while(getline(words, word)){
+     string key;
+     key = word;
+     std::sort(key.begin(), key.end());
+     auto lookup = dict.find(key);
+     if(lookup==dict.end()){
+     dict[key].push_back(word);
+     }
+     else{
+     for(size_t i = 0; i < dict.at(key).size(); i++){
+					if(dict[key][i] == word){
+     return;
+					}
+     }
+     dict[key].push_back(word);
+     }
+    	}
+     }
+     */
 }
 
 /**
@@ -32,6 +55,24 @@ AnagramDict::AnagramDict(const string& filename)
 AnagramDict::AnagramDict(const vector<string>& words)
 {
     /* Your code goes here! */
+    /**
+     for(auto &word: words){
+     string key = word;
+     std::sort(key.begin(), key.end());
+     auto lookup = dict.find(key);
+     if(lookup==dict.end()){
+     dict[key].push_back(word);
+     }
+     else{
+     for(size_t i = 0; i < dict.at(key).size(); i++){
+     if(dict[key][i] == word){
+					return;
+     }
+     }
+     dict[key].push_back(word);
+     }
+     }
+     */
 }
 
 /**
@@ -43,6 +84,15 @@ AnagramDict::AnagramDict(const vector<string>& words)
 vector<string> AnagramDict::get_anagrams(const string& word) const
 {
     /* Your code goes here! */
+    /**
+     string key = word;
+     std::sort(key.begin(), key.end());
+     auto lookup = dict.find(key);
+     if(dict.find(key)!=dict.end()){
+    	return dict.find(key)->second;
+     }
+     return vector< string >();
+     */
     return vector<string>();
 }
 
@@ -55,5 +105,14 @@ vector<string> AnagramDict::get_anagrams(const string& word) const
 vector<vector<string>> AnagramDict::get_all_anagrams() const
 {
     /* Your code goes here! */
+    /**
+     vector<vector<string>> result;
+     for(auto &it: dict){
+    	if(it.second.size()>1){
+     result.push_back(it.second);
+    	}
+     }
+     return result;
+     */
     return vector<vector<string>>();
 }
