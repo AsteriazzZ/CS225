@@ -61,13 +61,13 @@ void CommonWords::init_file_word_maps(const vector<string>& filenames)
 void CommonWords::init_common()
 {
     /* Your code goes here! */
-    for (size_t i = 0; i < filenames.size(); i++) {
-    	for (auto &key: file_word_maps[i]{
-    		auto lookup = common.find(key->first);
-    		if (lookup != common.end(){
+    for (size_t i = 0; i < file_word_maps.size(); i++) {
+    	for (auto &key: file_word_maps[i]){
+    		auto lookup = common.find(key.first);
+    		if (lookup != common.end()){
     			lookup->second++;
     		}
-    		else common[key->first] = 1;
+    		else common[key.first] = 1;
     	}
     }
 }
@@ -81,14 +81,13 @@ vector<string> CommonWords::get_common_words(unsigned int n) const
 {
     vector<string> out;
     /* Your code goes here! */
-    vector<string> out;
     for (auto &it: common){
     	if (it.second == file_word_maps.size()){
     		bool flag = true;
     		for (auto &it2: file_word_maps){
     			if(it2.find(it.first)->second < n) flag = false;
     		}
-    		if (flag == true) it.push_back(it.first);
+    		if (flag == true) out.push_back(it.first);
     	}
     }
     return out;
