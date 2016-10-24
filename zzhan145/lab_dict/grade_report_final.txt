@@ -1,0 +1,44 @@
+Grading r34875 by zzhan145 committed on Wed Oct 19 20:46:55 CDT 2016
+Monad Autograder
+Testing lab_dict at 2016-10-24 00:37:20
+
+"Ridiculous!" ~ Kyle Johnson
+
+Setting up test environment...
+Compiling...
+================================================================
+common_words.cpp:64:28: error: use of undeclared identifier 'filenames'
+    for (size_t i = 0; i < filenames.size(); i++) {
+                           ^
+common_words.cpp:65:39: error: expected ')'
+        for (auto &key: file_word_maps[i]{
+                                         ^
+common_words.cpp:65:10: note: to match this '('
+        for (auto &key: file_word_maps[i]{
+            ^
+common_words.cpp:72:5: error: expected statement
+    }
+    ^
+common_words.cpp:84:20: error: redefinition of 'out'
+    vector<string> out;
+                   ^
+common_words.cpp:82:20: note: previous definition is here
+    vector<string> out;
+                   ^
+common_words.cpp:91:28: error: no member named 'push_back' in 'std::__1::pair<const std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >, unsigned int>'
+                if (flag == true) it.push_back(it.first);
+                                  ~~ ^
+5 errors generated.
+make: *** [common_words.o] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
