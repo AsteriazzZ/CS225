@@ -24,21 +24,43 @@ using std::sort;
 AnagramDict::AnagramDict(const string& filename)
 {
     /* Your code goes here! */
+//    ifstream words(filename);
+//    string cur;
+//    if (words.is_open()){
+//        while (getline(words, cur)){
+//            string key = cur;
+//            sort(key.begin(), key.end());
+//            
+//            auto lookup = dict.find(key);
+//            if (lookup != dict.end()){
+//                for (size_t i = 0; i < dict.at(key).size(); i++){
+//                    if (dict[key][i] == cur)
+//                        return;
+//                }
+//                dict[key].push_back(cur);
+//            }
+//            else dict[key].push_back(cur);
+//        }
+//    }
     ifstream words(filename);
-    string cur;
-    if (words.is_open()){
-        while (getline(words, cur)){
-            string key = cur;
+    string word;
+    if(words.is_open()){
+        while(getline(words, word)){
+            string key;
+            key = word;
             sort(key.begin(), key.end());
-            
             auto lookup = dict.find(key);
-            if (lookup != dict.end()){
-                for (size_t i = 0; i < dict.at(key).size(); i++){
-                    if (dict[key][i] == cur)
-                        return;
-                }
+            if(lookup==dict.end()){
+                dict[key].push_back(word);
             }
-            else dict[key].push_back(cur);
+            else{
+                for(size_t i = 0; i < dict.at(key).size(); i++){
+                    if(dict[key][i] == word){
+                        return;
+                    }
+                }
+                dict[key].push_back(word);
+            }
         }
     }
 }
@@ -50,18 +72,34 @@ AnagramDict::AnagramDict(const string& filename)
 AnagramDict::AnagramDict(const vector<string>& words)
 {
     /* Your code goes here! */
-    for (auto &cur : words){
-        string key = cur;
+//    for (auto &cur : words){
+//        string key = cur;
+//        sort(key.begin(), key.end());
+//        
+//        auto lookup = dict.find(key);
+//        if (lookup != dict.end()){
+//            for (size_t i = 0; i < dict.at(key).size(); i++){
+//                if (dict[key][i] == cur)
+//                    return;
+//            }
+//        }
+//        else dict[key].push_back(cur);
+//    }
+    for(auto &word: words){
+        string key = word;
         sort(key.begin(), key.end());
-        
         auto lookup = dict.find(key);
-        if (lookup != dict.end()){
-            for (size_t i = 0; i < dict.at(key).size(); i++){
-                if (dict[key][i] == cur)
-                    return;
-            }
+        if(lookup==dict.end()){
+            dict[key].push_back(word);
         }
-        else dict[key].push_back(cur);
+        else{
+            for(size_t i = 0; i < dict.at(key).size(); i++){
+                if(dict[key][i] == word){
+                    return;
+                }
+            }
+            dict[key].push_back(word);
+        }
     }
 }
 
