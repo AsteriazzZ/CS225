@@ -15,7 +15,20 @@
 class Quadtree
 {
   public:
-
+    Quadtree();
+    Quadtree(PNG &source, int resolution);
+    Quadtree(const Quadtree &other);
+    ~Quadtree();
+    Quadtree &operator=(Quadtree const &other);
+    
+    void buildTree(PNG const &source, int resolution);
+    RGBAPixel getPixel(int x, int y) const;
+    PNG decompress() const;
+    void clockwiseRotate();
+    void prune(int tolerance);
+    int pruneSize(int tolerance) const;
+    int idealPrune(int numLeaves) const;
+    
   private:
     /**
      * A simple class representing a single node of a Quadtree.
@@ -34,6 +47,19 @@ class Quadtree
     };
 
     QuadtreeNode* root; /**< pointer to root of quadtree */
+    
+    int resolution;
+    
+    void clear(QuadtreeNode *&curNode);
+    void copy(QuadtreeNode *& cop, QuadtreeNode * const & org);
+    void buildTree(QuadtreeNode *&curNode, PNG const &source, int x, int y, int resolution);
+    RGBAPixel getPixel(QuadtreeNode *curNode, int x, int y, int resolution)const;
+    void decompress(QuadtreeNode *curNode, PNG &source, int x, int y, int resolution)const;
+    void clockwiseRotate(QuadtreeNode *curNode);
+    void prune(int tolerance, QuadtreeNode *curNode);
+    bool checkPrune(QuadtreeNode *root, QuadtreeNode *curNode, int resolution) const;
+    int pruneSize(QuadtreeNode *curNode, int resolution) const;
+    int search(int numLeaves, int low, int high)const;
 
 
 /**** Functions for testing/grading                      ****/
