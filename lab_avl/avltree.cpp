@@ -30,6 +30,18 @@ void AVLTree<K, V>::rotateLeft(Node*& t)
 {
     *_out << __func__ << endl; // Outputs the rotation name (don't remove this)
     // your code here
+    Node * temp = t->right;
+    t->right = temp->left;
+    temp->left = t;
+    t->height = 1 + max(heightOrNeg1)
+    t = temp;
+    t->height = 1 +
+    
+    
+    
+    
+    
+    
     /**
     Node *temp = t->right;
 	t->right = temp->left;
@@ -82,7 +94,26 @@ void AVLTree<K, V>::rebalance(Node*& subtree)
 {
     // your code here
     /**
-     
+     int balance = subtree->right->height - subtree->left->height;
+    if(balance>1)
+    {
+        if(subtree->right->height>1)
+            rotateLeft(subtree);
+        else
+            rotateRightLeft(subtree);
+    subtree.height = max(subtree->right->height, subtree->left->height) +1;   
+    }
+    else if(balance<-1)
+    {
+        if(subtree->left->height<-1)
+            rotateRight(subtree);
+        else
+            rotateLeftRight(subtree);
+
+    subtree.height = max(subtree->right->height, subtree->left->height) +1;
+    }
+    else 
+        subtree.height = max(subtree->right->height, subtree->left->height) +1;
      */
 }
 
