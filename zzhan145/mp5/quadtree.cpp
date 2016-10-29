@@ -6,61 +6,9 @@
 
 #include "quadtree.h"
 
-Quadtree::Quadtree(){
-    // no argument constructor
-    root = NULL;
-    resolution = 1;
-}
-
-Quadtree::Quadtree(PNG &source, int resolution){
-    // two argument constructor
-    root = new QuadtreeNode();
-    buildTree(source, resolution);
-}
-
-Quadtree::Quadtree(const Quadtree &other){
-    // copy constructor
-    resolution = other.resolution;
-    copy(root, other.root);
-}
-
-// helper function of copy constructor
-void Quadtree::copy(QuadtreeNode *& cop, QuadtreeNode * const & org)
-{
-    if (org == NULL){
-        cop = NULL;
-        return;
-    }
-    cop = new QuadtreeNode();
-    cop->element = org->element;
-    
-    copy(cop->nwChild, org->nwChild);
-    copy(cop->neChild, org->neChild);
-    copy(cop->swChild, org->swChild);
-    copy(cop->seChild, org->seChild);
-    return;
-}
-
-Quadtree::~Quadtree(){
-    // destructor
-    clear(root);
-    resolution = 1;
-}
-
-Quadtree & Quadtree::operator=(Quadtree const &other){
-    // assignment operator
-    resolution = other.resolution;
-    if (this != &other){
-        clear(root);
-        copy(root, other.root);
-    }
-    return *this;
-}
-
+//mp5.1
 void Quadtree::buildTree(PNG const &source, int resolution){
-    if(root!=NULL){
-        clear(root);
-    }
+    if(root!=NULL) clear(root);
     
     this->resolution = resolution;
     buildTree(root, source, 0, 0, resolution);
@@ -84,8 +32,75 @@ void Quadtree::buildTree(QuadtreeNode *&curNode, PNG const &source, int x, int y
         curNode->element.red = (curNode->nwChild->element.red + curNode->neChild->element.red + curNode->seChild->element.red + curNode->swChild->element.red)/4;
         curNode->element.blue = (curNode->nwChild->element.blue + curNode->neChild->element.blue + curNode->seChild->element.blue + curNode->swChild->element.blue)/4;
         curNode->element.green = (curNode->nwChild->element.green + curNode->neChild->element.green + curNode->seChild->element.green + curNode->swChild->element.green)/4;
-        //curNode->element.alpha = (curNode->nwChild->element.alpha+curNode->neChild->element.alpha+curNode->seChild->element.alpha+curNode->swChild->element.alpha)/4;
     }
+}
+
+Quadtree::Quadtree(){
+    // no argument constructor
+    root = NULL;
+    resolution = 1;
+}
+
+Quadtree::Quadtree(PNG const &source, int resolution){
+    // two argument constructor
+    root = new QuadtreeNode();
+    buildTree(source, resolution);
+}
+
+Quadtree::Quadtree(Quadtree const &other){
+    // copy constructor
+    resolution = other.resolution;
+    copy(root, other.root);
+}
+
+// helper function of copy constructor
+void Quadtree::copy(QuadtreeNode *&cop, QuadtreeNode * const & org)
+{
+    if (org == NULL){
+        cop = NULL;
+        return;
+    }
+    cop = new QuadtreeNode();
+    cop->element = org->element;
+    
+    copy(cop->nwChild, org->nwChild);
+    copy(cop->neChild, org->neChild);
+    copy(cop->swChild, org->swChild);
+    copy(cop->seChild, org->seChild);
+    return;
+}
+
+Quadtree::~Quadtree(){
+    // destructor
+    clear(root);
+    resolution = 1;
+}
+
+//helper function for destructor
+void Quadtree::clear(QuadtreeNode *&curNode){
+    if(curNode==NULL){
+        return;
+    }
+    
+    clear(curNode->nwChild);
+    clear(curNode->neChild);
+    clear(curNode->swChild);
+    clear(curNode->seChild);
+    
+    delete curNode;
+    curNode = NULL;
+    
+    return;
+}
+
+Quadtree const & Quadtree::operator=(Quadtree const &other){
+    // assignment operator
+    resolution = other.resolution;
+    if (this != &other){
+        clear(root);
+        copy(root, other.root);
+    }
+    return *this;
 }
 
 RGBAPixel Quadtree::getPixel(int x, int y) const{
@@ -98,33 +113,28 @@ RGBAPixel Quadtree::getPixel(int x, int y) const{
 }
 
 //helper function for getpixel
-RGBAPixel Quadtree::getPixel(QuadtreeNode *curNode, int x, int y, int resolution)const{
-    if(curNode->nwChild==NULL || resolution == 1){
+RGBAPixel Quadtree::getPixel(QuadtreeNode const *curNode, int x, int y, int resolution)const{
+    if(curNode->nwChild == NULL || resolution == 1)
         return curNode->element;
-    }
     
-    if(x < resolution/2 && y < resolution/2){
+    if(x < resolution/2 && y < resolution/2)
         return getPixel(curNode->nwChild, x, y, resolution/2);
-    }
-    else if(x < resolution/2 && y >= resolution/2){
+    
+    else if(x < resolution/2 && y >= resolution/2)
         return getPixel(curNode->swChild, x, y-resolution/2, resolution/2);
-    }
-    else if(x >= resolution/2 && y < resolution/2){
+    
+    else if(x >= resolution/2 && y < resolution/2)
         return getPixel(curNode->neChild, x-resolution/2, y, resolution/2);
-    }
-    else{
-        return getPixel(curNode->seChild, x-resolution/2, y-resolution/2, resolution/2);
-    }
+    
+    else return getPixel(curNode->seChild, x-resolution/2, y-resolution/2, resolution/2);
 }
 
 PNG Quadtree::decompress() const{
-    if(root==NULL){
-        return PNG();
-    }
+    if(root==NULL) return PNG();
     
     PNG result = PNG(resolution, resolution);
-    for (int j = 0; j < resolution; j++){
-        for (int i = 0; i < resolution; i++){
+    for (int i = 0; i < resolution; i++){
+        for (int j = 0; j < resolution; j++){
             *result(i, j) = getPixel(i, j);
         }
     }
@@ -193,7 +203,7 @@ void Quadtree::prune(int tolerance, QuadtreeNode *curNode){
 }
 
 //helper function for prune
-bool Quadtree::checkPrune(QuadtreeNode *root, QuadtreeNode *curNode, int tolerance) const{
+bool Quadtree::checkPrune(QuadtreeNode const *root, QuadtreeNode const *curNode, int tolerance) const{
     if(curNode->nwChild == NULL){
         int diff = (((root->element).red)-((curNode->element).red)) * (((root->element).red)-((curNode->element).red))
         + (((root->element).green)-((curNode->element).green)) * (((root->element).green)-((curNode->element).green))
@@ -215,23 +225,15 @@ int Quadtree::pruneSize(int tolerance) const{
 }
 
 //helper function for pruneSize
-int Quadtree::pruneSize(QuadtreeNode *curNode, int tolerance) const{
-    if(curNode==NULL){
-        return 0;
-    }
-    
-    if(checkPrune(curNode, curNode, tolerance)){
-        return 1;
-    }
-    
+int Quadtree::pruneSize(QuadtreeNode const *curNode, int tolerance) const{
+    if(curNode==NULL) return 0;
+    if(checkPrune(curNode, curNode, tolerance)) return 1;
     else{
         return 	pruneSize(curNode->nwChild, tolerance) +
         pruneSize(curNode->neChild, tolerance) +
         pruneSize(curNode->swChild, tolerance) +
         pruneSize(curNode->seChild, tolerance);
     }
-    
-    
 }
 
 int Quadtree::idealPrune(int numLeaves) const{
@@ -242,36 +244,9 @@ int Quadtree::idealPrune(int numLeaves) const{
 
 //helper function for idealPrune
 int Quadtree::search(int numLeaves, int low, int high) const{
-    if(low > high){
-        return low;
-    }
-    
+    if(low > high) return low;
     int mid = (low+high)/2;
     int leaves =  pruneSize(mid);
-    if(leaves > numLeaves){
-        return search(numLeaves, mid+1, high);
-    }
-    
+    if(leaves > numLeaves) return search(numLeaves, mid+1, high);
     return search(numLeaves, low, mid-1);
-}
-
-
-
-
-//other private helper functions
-//clear function
-void Quadtree::clear(QuadtreeNode *&curNode){
-    if(curNode==NULL){
-        return;
-    }
-    
-    clear(curNode->nwChild);
-    clear(curNode->neChild);
-    clear(curNode->swChild);
-    clear(curNode->seChild);
-    
-    delete curNode;
-    curNode = NULL;
-    
-    return;
 }
