@@ -99,6 +99,13 @@ class AVLTree
      * @param key The element to search for
      * @return The value stored for that key
      */
+    void noChildRemoval(Node *& subtree);
+    void twoChildRemoval(Node *& subtree);
+    void oneChildRemoval(Node *& subtree);
+//    void noChildRemoval(Node *& subtree, const K& key);
+//    void twoChildRemoval(Node *& subtree, const K& key);
+//    void oneChildRemoval(Node *& subtree, const K& key);
+    
     V find(const K& key) const;
 
     /**
