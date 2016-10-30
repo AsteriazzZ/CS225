@@ -1,8 +1,8 @@
-Grading r39737 by enx-cs225autograder committed on Fri Oct 28 01:55:22 CDT 2016
+Grading r40396 by zzhan145 committed on Sat Oct 29 14:33:21 CDT 2016
 Monad Autograder
-Testing mp5 at 2016-10-29 01:38:33
+Testing mp5 at 2016-10-30 01:35:15
 
-"Computer Science is no more about computers than astronomy is about telescopes." ~ E. Dijkstra
+"For humans, honesty is a matter of degree. Engineers are always honest in matters of technology and human relationships. That's why it's a good idea to keep engineers away from customers, romantic interests, and other people who can't handle the truth." ~ Scott Adams
 
 Setting up test environment...
 Compiling...
@@ -59,10 +59,10 @@ test_idealPrune_4  . . . . [5 pts] - passed
 val_clockwiseRotate (asan) [2 pts] - passed
 val_prune (asan) . . . . . [4 pts] - passed
 val_idealPrune (asan)  . . [3 pts] - passed
-test_const_correctness . . [4 pts] - FAILED
+test_const_correctness . . [4 pts] - passed
 
 
 Total score...
 ================================================================
-TOTAL SCORE: 96
+TOTAL SCORE: 100
 
