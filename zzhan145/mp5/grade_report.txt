@@ -1,8 +1,8 @@
-Grading r40396 by zzhan145 committed on Sat Oct 29 14:33:21 CDT 2016
+Grading r40842 by enx-cs225autograder committed on Sun Oct 30 02:06:41 CDT 2016
 Monad Autograder
-Testing mp5 at 2016-10-30 01:35:15
+Testing mp5 at 2016-10-31 02:14:51
 
-"For humans, honesty is a matter of degree. Engineers are always honest in matters of technology and human relationships. That's why it's a good idea to keep engineers away from customers, romantic interests, and other people who can't handle the truth." ~ Scott Adams
+"There's an old story about the person who wished his computer were as easy to use as his telephone. That wish has come true, since I no longer know how to use my telephone." ~ Bjarne Stroustrup
 
 Setting up test environment...
 Compiling...
