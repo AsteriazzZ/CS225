@@ -218,28 +218,32 @@ int Quadtree::pruneSize(int tolerance) const{
 }
 
 //helper function for pruneSize
-int Quadtree::pruneSize(QuadtreeNode const *curNode, int tolerance) const{
-    if(curNode==NULL) return 0;
-    if(checkPrune(curNode, curNode, tolerance)) return 1;
+int Quadtree::pruneSize(QuadtreeNode const *subRoot, int tolerance) const{
+    
+    if(subRoot == NULL) return 0;
+    
+    bool prunable = checkPrune(subRoot, subRoot, tolerance);
+    if(prunable) return 1;
     else{
-        return 	pruneSize(curNode->nwChild, tolerance) +
-        pruneSize(curNode->neChild, tolerance) +
-        pruneSize(curNode->swChild, tolerance) +
-        pruneSize(curNode->seChild, tolerance);
+        return 	pruneSize(subRoot->nwChild, tolerance) +
+        pruneSize(subRoot->neChild, tolerance) +
+        pruneSize(subRoot->swChild, tolerance) +
+        pruneSize(subRoot->seChild, tolerance);
     }
 }
 
 int Quadtree::idealPrune(int numLeaves) const{
-    int low = 0, high = 3*255*255;
+    int min = 0, max = 3*255*255;
     
-    return search(numLeaves, low, high);
+    return search(numLeaves, min, max);
 }
 
 //helper function for idealPrune
 int Quadtree::search(int numLeaves, int low, int high) const{
     if(low > high) return low;
-    int mid = (low+high)/2;
+    int mid = (low + high)/2;
     int leaves =  pruneSize(mid);
-    if(leaves > numLeaves) return search(numLeaves, mid+1, high);
+    if(leaves > numLeaves)
+        return search(numLeaves, mid+1, high);
     return search(numLeaves, low, mid-1);
 }
