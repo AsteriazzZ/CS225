@@ -50,13 +50,13 @@ class Quadtree
     
     int resolution;
     
-    void clear(QuadtreeNode *&curNode);
+    void buildTree(QuadtreeNode *&subRoot, PNG const &source, int x, int y, int resolution);
     void copy(QuadtreeNode *& cop, QuadtreeNode * const & org);
-    void buildTree(QuadtreeNode *&curNode, PNG const &source, int x, int y, int resolution);
-    RGBAPixel getPixel(QuadtreeNode const *curNode, int x, int y, int resolution)const;
+    void clear(QuadtreeNode *&subRoot);
+    RGBAPixel getPixel(QuadtreeNode const *subRoot, int x, int y, int resolution)const;
     void decompress(QuadtreeNode *curNode, PNG &source, int x, int y, int resolution)const;
-    void clockwiseRotate(QuadtreeNode *curNode);
-    void prune(int tolerance, QuadtreeNode *curNode);
+    void clockwiseRotate(QuadtreeNode *subRoot);
+    void prune(int tolerance, QuadtreeNode *subRoot);
     bool checkPrune(QuadtreeNode const *root, QuadtreeNode const *curNode, int resolution) const;
     int pruneSize(QuadtreeNode const *curNode, int resolution) const;
     int search(int numLeaves, int low, int high)const;
