@@ -357,10 +357,23 @@ size_t insertion_idx(const std::vector<T>& elements, const C& val)
     size_t max = elements.size() - 1;
     
     while (min <= max){
-    	size_t mid = min + (max - min)/2;
+    	
+    	size_t mid = (max + min)/2;
+    	
     	if (elements[mid] == val) return mid;
     	else if (elements[mid] < val) min = mid+1;
-    	else max = mid-1;
+    	else{
+    		if (mid == min) return min;
+    		else max = mid-1;
+    	}
+    	/**
+    	if (elements[mid] > val){
+    		if (mid == min) return min;
+    		else max = mid - 1;
+    	}
+    	else if (elements[mid] < val) min = mid + 1;
+    	else return mid;
+    	*/
     }
     return min;
 }
