@@ -1,0 +1,29 @@
+Grading r45231 by zzhan145 committed on Thu Nov  3 13:28:17 CDT 2016
+Monad Autograder
+Testing lab_btree at 2016-11-07 01:17:26
+
+"The first 90% of the code accounts for the first 90% of the development time. The remaining 10% of the code accounts for the other 90% of the development time." ~ Tom Cargill
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_insertion_idx_emp  . . . [10 pts] - passed
+test_insertion_idx_small  . . [10 pts] - passed
+test_insertion_idx_logn . . . [10 pts] - passed
+test_btree3_small (asan)  . . [10 pts] - passed
+test_btree3_large_seq . . . . [10 pts] - passed
+test_btree3_large_rand  . . . [10 pts] - passed
+test_btree64_large_seq  . . . [10 pts] - passed
+test_btree64_large_rand . . . [10 pts] - passed
+test_btree128_med_rand (asan) [10 pts] - passed
+test_btree5_strings . . . . . [10 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+
