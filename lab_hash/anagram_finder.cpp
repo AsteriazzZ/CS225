@@ -59,6 +59,30 @@ bool AnagramFinder<Dict>::checkWord(const string& word, const string& test)
     (void) test; // prevent warnings... When you implement this function, remove this line.
 
     return true;
+    /**
+    if(word.length() != test.length()){
+        return false;
+     }
+
+     Dict<char, int> wordHash(256);
+     Dict<char, int> testHash(256);
+
+     for(size_t i = 0; i < word.length(); i++){
+        wordHash[word[i]]++;
+     }
+
+     for(size_t j = 0; j < test.length(); j++){
+        testHash[test[j]]++;
+     }
+
+     for(size_t k = 0; k < word.length(); k++){
+        if(wordHash[k] != testHash[k]){
+            return false;
+        }
+     }
+
+    return true;
+    */
 }
 
 /**
