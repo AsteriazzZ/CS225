@@ -88,6 +88,19 @@ void LPHashTable<K, V>::insert(K const& key, V const& value)
 
     (void) key;   // prevent warnings... When you implement this function, remove this line.
     (void) value; // prevent warnings... When you implement this function, remove this line.
+    /**
+    size_t index = hash(key, size);
+    while(table[index] != NULL){
+        index = (index+1) % size;
+    }
+    pair<K, V> *temp = new pair<K, V> (key, value);
+    table[index] = temp;
+    should_probe[index] = true;
+    ++elems;
+    if(shouldResize()){
+        resizeTable();
+    }
+    */
 }
 
 template <class K, class V>
