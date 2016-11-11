@@ -1,8 +1,8 @@
-Grading r48833 by enx-cs225autograder committed on Wed Nov  9 00:33:43 CST 2016
+Grading r48926 by enx-cs225autograder committed on Thu Nov 10 00:41:49 CST 2016
 Monad Autograder
-Testing mp6 at 2016-11-10 00:40:52
+Testing mp6 at 2016-11-11 00:42:33
 
-"@return A voidean value indicating whether the test was successful." ~ lab_avl
+"There's not enough wiggleability, you know." ~ Eric Shaffer
 
 Setting up test environment...
 Compiling...
