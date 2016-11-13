@@ -1,8 +1,8 @@
-Grading r49302 by enx-cs225autograder committed on Fri Nov 11 00:43:36 CST 2016
+Grading r49760 by enx-cs225autograder committed on Sat Nov 12 00:40:13 CST 2016
 Monad Autograder
-Testing mp6 at 2016-11-12 00:39:06
+Testing mp6 at 2016-11-13 00:36:25
 
-"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." ~ Antoine de Saint-Exupery
+"There are two ways of constructing a software design. One way is to make it so simple that there are obviously no deficiencies. And the other way is to make it so complicated that there are no obvious deficiencies." ~ C.A.R. Hoare
 
 Setting up test environment...
 Compiling...
