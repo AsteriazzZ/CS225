@@ -1,4 +1,4 @@
-/**
+d/**
  * @file mosaiccanvas.h
  */
 
@@ -11,7 +11,7 @@
 #include "util.h"
 
 using namespace std;
-using namespace util;
+using namespace util;d
 
 bool MosaicCanvas::enableOutput = false;
 
