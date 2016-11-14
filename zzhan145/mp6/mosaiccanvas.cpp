@@ -11,7 +11,7 @@
 #include "util.h"
 
 using namespace std;
-using namespace util;d
+using namespace util;
 
 bool MosaicCanvas::enableOutput = false;
 
