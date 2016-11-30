@@ -42,6 +42,8 @@ namespace GraphTools
     void findMST(Graph& graph);
 
     // define any helper functions here:
+    int BFSFindMinWeight(Graph& graph, Vertex v);
+    void initializeGraph(Graph& graph);
 
 }
 
