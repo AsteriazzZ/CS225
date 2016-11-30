@@ -23,10 +23,95 @@
  *
  * @hint Initially label vertices and edges as unvisited.
  */
+
+void GraphTools::initializeGraph(Graph& graph)
+{
+	vector<Vertex> vertices = graph.getVertices();
+    for(auto & it:vertices)
+    {
+    	graph.setVertexLabel(it, "UNEXPLORED");
+    	vector<Vertex> adjacentVertices = graph.getAdjacent(it);
+    	for(auto & adj:adjacentVertices)
+    		graph.setEdgeLabel(it, adj, "UNEXPLORED");
+    }
+
+}
+
 int GraphTools::findMinWeight(Graph& graph)
 {
     /* Your code here! */
-    return -1;
+    
+    // Initially label vertices and edges as unvisited.
+    vector<Vertex> vertices = graph.getVertices();
+    initializeGraph(graph);
+
+    // BFS
+    int minweight;
+    int curweight;
+    Vertex v = graph.getStartingVertex();
+    vector<Vertex> adjacentVertices = graph.getAdjacent(v);
+    minweight = graph.getEdgeWeight(v, adjacentVertices[0]); // initialize the minweight
+    for(auto & it:vertices)
+    {
+    	if(graph.getVertexLabel(it) == "UNEXPLORED")
+    	{
+    		curweight = BFSFindMinWeight(graph, it);
+    		if(curweight < minweight)
+    			minweight = curweight;
+    	}
+    		
+    }
+    return minweight;
+}
+
+int GraphTools::BFSFindMinWeight(Graph& graph, Vertex v)
+{
+	int minweight;
+    int curweight;
+    vector<Vertex> adjacentVertices = graph.getAdjacent(v);
+    minweight = graph.getEdgeWeight(v, adjacentVertices[0]);
+    Vertex curMinSource = v;
+    Vertex curMinDest =  adjacentVertices[0]; // initialize the minweight
+
+	queue<Vertex> q;
+	q.push(v);
+	graph.setVertexLabel(v, "VISITED");
+	while(!q.empty())
+	{
+		Vertex curVertex = q.front();
+		q.pop();
+		vector<Vertex> adjacentVertices = graph.getAdjacent(curVertex);
+		for(auto & it:adjacentVertices)  // for all w in G.adjacentVertices(v)
+		{
+			if(graph.getVertexLabel(it) == "UNEXPLORED")  // if it is new
+			{
+				graph.setVertexLabel(it, "VISITED");
+				graph.setEdgeLabel(curVertex, it, "DISCOVERY");
+				q.push(it);
+				curweight = graph.getEdgeWeight(curVertex, it);
+				if(curweight < minweight)
+				{
+					minweight = curweight;
+					curMinSource = curVertex;
+					curMinDest = it;
+
+				}	
+			}
+			else if(graph.getEdgeLabel(curVertex, it) == "UNEXPLORED")// if it is NOT new but the edge is UNEXPLORED
+			{
+				graph.setEdgeLabel(curVertex, it, "CROSS");
+				curweight = graph.getEdgeWeight(curVertex, it);
+				if(curweight < minweight)
+				{
+					minweight = curweight;
+					curMinSource = curVertex;
+					curMinDest = it;
+				}	
+			}
+		}
+	}
+	graph.setEdgeLabel(curMinSource, curMinDest, "MIN");
+	return minweight;
 }
 
 /**
@@ -53,7 +138,57 @@ int GraphTools::findMinWeight(Graph& graph)
 int GraphTools::findShortestPath(Graph& graph, Vertex start, Vertex end)
 {
     /* Your code here! */
-    return -1;
+    vector<Vertex> vertices = graph.getVertices();
+    unordered_map<Vertex, int> dist;
+    unordered_map<Vertex, Vertex> parent;
+
+    initializeGraph(graph);
+
+    // initialize the dist map
+    dist[start] = 0;
+
+    queue<Vertex> q;
+	q.push(start);
+	graph.setVertexLabel(start, "VISITED");
+	while(!q.empty())
+	{
+		Vertex curVertex = q.front();
+		q.pop();
+		vector<Vertex> adjacentVertices = graph.getAdjacent(curVertex);
+		for(auto & it:adjacentVertices)  // for all w in G.adjacentVertices(curVertex)
+		{
+			if(graph.getVertexLabel(it) == "UNEXPLORED")  // if it is new
+			{
+				graph.setVertexLabel(it, "VISITED");
+				graph.setEdgeLabel(curVertex, it, "DISCOVERY");
+				q.push(it);
+				dist[it] = dist[curVertex] + 1;
+				parent[it] = curVertex;
+				
+			}
+			else if(graph.getEdgeLabel(curVertex, it) == "UNEXPLORED")// if it is NOT new but the edge is UNEXPLORED
+			{
+				graph.setEdgeLabel(curVertex, it, "CROSS");
+				int curDist = dist[curVertex] + 1;
+				auto lookup = dist.find(it);
+				if(lookup->second > curDist)
+				{
+					dist[it] = curDist;
+					parent[it] = curVertex;
+				}	
+			}
+		}
+	}
+
+	// set the edges in the shortest path
+	Vertex curParent = end;
+	while(curParent != start)
+	{
+		graph.setEdgeLabel(curParent, parent[curParent], "MINPATH");
+		curParent = parent[curParent];
+	}
+
+	return dist[end];
 }
 
 /**
@@ -72,5 +207,30 @@ int GraphTools::findShortestPath(Graph& graph, Vertex start, Vertex end)
 void GraphTools::findMST(Graph& graph)
 {
     /* Your code here! */
-}
+    initializeGraph(graph);
 
+    // sort the edges
+    vector<Edge> edges = graph.getEdges();
+    sort(edges.begin(), edges.end());
+
+    int count = 0;
+    vector<Vertex> vertices = graph.getVertices();
+    int numVert = vertices.size();
+    DisjointSets verticeSet;
+    verticeSet.addelements(numVert);
+
+    for(auto & curEdge : edges)
+    {
+    	int source = verticeSet.find(curEdge.source);
+    	int dest = verticeSet.find(curEdge.dest);
+    	if( source != dest)
+    	{
+    		verticeSet.setunion(source, dest);
+    		graph.setEdgeLabel(curEdge.source, curEdge.dest, "MST");
+    		count++;
+    	}
+    	if(count == numVert - 1)
+    		break;
+    }
+    
+}
