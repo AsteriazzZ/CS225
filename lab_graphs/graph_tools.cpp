@@ -24,46 +24,43 @@
  * @hint Initially label vertices and edges as unvisited.
  */
 
+
 void GraphTools::initializeGraph(Graph& graph)
 {
-	vector<Vertex> vertices = graph.getVertices();
-    for(auto & it:vertices)
-    {
-    	graph.setVertexLabel(it, "UNEXPLORED");
-    	vector<Vertex> adjacentVertices = graph.getAdjacent(it);
-    	for(auto & adj:adjacentVertices)
-    		graph.setEdgeLabel(it, adj, "UNEXPLORED");
-    }
-
+	vector<Vertex> v = graph.getVertices();
+	for (auto & it : v)
+	{
+		graph.setVertexLabel(it, "UNEXPLORED");
+		vector<Vertex> adjacentV = graph.getAdjacent(it);
+		for (auto & adj : adjacentV){
+			graph.setEdgeLabel(it, adj, "UNEXPLORED");
+		}
+	}
 }
 
 int GraphTools::findMinWeight(Graph& graph)
 {
-    /* Your code here! */
-    
-    // Initially label vertices and edges as unvisited.
-    vector<Vertex> vertices = graph.getVertices();
-    initializeGraph(graph);
-
-    // BFS
-    int minweight;
-    int curweight;
-    Vertex v = graph.getStartingVertex();
-    vector<Vertex> adjacentVertices = graph.getAdjacent(v);
-    minweight = graph.getEdgeWeight(v, adjacentVertices[0]); // initialize the minweight
-    for(auto & it:vertices)
-    {
-    	if(graph.getVertexLabel(it) == "UNEXPLORED")
-    	{
-    		curweight = BFSFindMinWeight(graph, it);
-    		if(curweight < minweight)
-    			minweight = curweight;
-    	}
-    		
-    }
-    return minweight;
+	vector<Vertex> v = graph.getVertices();
+	initializeGraph(graph);
+	
+	int minW;
+	int curW;
+	Vertex start = graph.getStartingVertex();
+	vector<Vertex> adjacentV = graph.getAdjacent(start);
+	minW = graph.getEdgeWeight(start, adjacentV[0]);
+	
+	for (auto & it : v)
+	{
+		if (graph.getVertexLabel(it) == "UNEXPLORED"){
+			curW = BFSFindMinWeight(graph, it);
+			if (curW < minW)
+				minW = curW;
+		}
+	}
+	return minW;
 }
 
+/**
 int GraphTools::BFSFindMinWeight(Graph& graph, Vertex v)
 {
 	int minweight;
@@ -112,7 +109,9 @@ int GraphTools::BFSFindMinWeight(Graph& graph, Vertex v)
 	}
 	graph.setEdgeLabel(curMinSource, curMinDest, "MIN");
 	return minweight;
+	
 }
+*/
 
 /**
  * Returns the shortest distance (in edges) between the Vertices
