@@ -1,0 +1,15 @@
+Exam 4 report for  Asteria  Zhang
+          Problem | Score
+  ----------------+------
+     mc-cpp4-003a |   4
+     mc-cpp4-003l |   0
+     mc-cpp4-004b |   4
+     mc-cpp4-005d |   4
+     mc-cpp4-006a |   4
+     mc-cpp4-007c |   4
+  ----------------+------
+         first-02 | 4.29 / 13
+        second-02 | 13.00 / 13
+  ----------------+------
+Total: 37.29 (=74.58 percent) 
+
