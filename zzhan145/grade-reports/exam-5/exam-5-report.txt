@@ -1,0 +1,19 @@
+Exam 5 report for Asteria Zhang
+
+
+                         Problem | Score
+       --------------------------+------
+                    mc-cpp5-001a |   4
+                    mc-cpp5-002c |   0
+                    mc-cpp5-003d |   4
+                    mc-cpp5-005c |   0
+                    mc-cpp5-006h |   4
+                    mc-cpp5-007a |   4
+                    mc-cpp5-008a |   0
+                    mc-cpp5-009d |   4
+       --------------------------+------
+                        first-02 | 3.78 /   9
+                       second-03 | 9.00 /   9
+       --------------------------+------
+                          Total: | 32.78 (=65.56%) 
+
